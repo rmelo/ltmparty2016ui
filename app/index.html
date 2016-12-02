@@ -1,0 +1,39 @@
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+  <link rel="stylesheet" href="app.css" />
+</head>
+
+<body ng-app="app" ng-cloak>
+
+  <div ng-view></div>
+
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
+  <script>
+    var config = {
+      apiKey: "AIzaSyAkq-eWLMrAshJcq0NE15DT1WqaZfuCPYc",
+      authDomain: "partylab-11b51.firebaseapp.com",
+      databaseURL: "https://partylab-11b51.firebaseio.com",
+      storageBucket: "partylab-11b51.appspot.com",
+      messagingSenderId: "189395033474",
+    };
+    firebase.initializeApp(config);
+  </script>
+
+  
+  <script src="app.js"></script>
+  <script src="services/apiService.js"></script>
+  <script src="views/login/login.js"></script>
+  <script src="views/home/home.js"></script>
+
+</body>
+
+</html>

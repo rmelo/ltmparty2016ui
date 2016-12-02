@@ -1,0 +1,49 @@
+<div class="home-background">
+
+  <!-- Header -->
+  <div class="home-header">
+    <div layout="column" layout-align="center center">
+      <div><img src="images/logo.png" /></div>
+    </div>
+  </div>
+
+  <!-- Card -->
+  <div class="home-card" layout="column" layout-align="center center">
+
+    <div class="logout">
+      <md-button ng-click="logout()" class="md-fab md-mini" aria-label="sair">
+        <md-icon md-svg-src="images/ic_close_white_24px.svg"></md-icon>
+        <md-tooltip md-visible="false" md-direction="left">
+          Sair
+        </md-tooltip>
+      </md-button>
+    </div>
+
+    <div class="user-info">
+      <img ng-src="{{vm.user.photoURL}}" class="user-photo" alt="{{vm.user.name}}" />
+      <h1 class="md-headline">{{vm.user.name}}</h1>
+    </div>
+
+    <div class="content-info" ng-hide="vm.wins()">
+      <div class="content-message">
+        <p class="md-body-1">Guarde seu <span class="green-text">código</span>, você precisará dele para ganhar seu prêmio.</p>
+        <p class="md-caption">Leve seu celular para o sorteio.</p>
+      </div>
+
+      <div class="code">
+        <p>{{vm.user.code}}</p>
+      </div>
+
+      <div class="goodluck">
+        <p class="md-body-2">Boa sorte!</p>
+      </div </div>
+
+    </div>
+
+    <div class="congratulations" ng-show="vm.wins()" layout="column" layout-align="center center">
+      <p class="title">Parabéns!</p>
+      <p class="text">Você ganhou<br /><span>{{vm.user.award.title}}.</span></p>
+      <p class="short-code">{{vm.user.code}}</p>
+    </div>
+
+    <div>

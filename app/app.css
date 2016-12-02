@@ -1,0 +1,116 @@
+/* app css stylesheet */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');
+
+body{
+  background: #03A9F4;
+  font-family: "Open Sans",open-sans,sans-serif;
+  font-weight: 300;
+}
+.home-background{
+  width: 100%;
+  height: 100%;
+  color: #5f697a;
+}
+.home-header img{
+  width:80;
+  height:80;
+  margin: 40px 0 40px 0;
+}
+.home-card{
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(43,59,93,.29);
+  margin: 0 20px 0 20px;
+}
+.home-card .logout{
+  position: absolute;
+  top: 136px;
+  right: -5;  
+}
+.home-card h1{
+  font-weight: 400;
+  margin-bottom: 40px;
+}
+
+.home-card .user-info{
+  width: 100%;
+  text-align: center;
+  padding-top:40px;
+  background: #F3F3F5;
+}
+.home-card .user-photo {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+.home-card .content-message{
+  font-size:16px;
+  padding: 10px 40px 10px 40px;
+  text-align: center;
+}
+.home-card .code{
+  text-align: center;
+  font-size: 22px;
+  padding: 0 40px 0 40px;
+}
+.code p, .green-text{
+  color:#00E676;
+}
+.home-card .code p{
+  margin: 0;
+  border: 2px solid #00E676;
+  padding: 10px 0 10px 0;
+  font-weight: 400;
+}
+.home-card .goodluck{
+  text-align: center;
+  padding: 10px 0 20px 0;
+}
+.home-card .congratulations{
+  width: 100%;
+  background: #00E676;
+  margin: 0 20px 0 20px;
+  text-align: center;
+}
+.home-card .congratulations p{
+  color:#fff;
+  font-weight: 400;
+}
+.home-card .congratulations .title{
+  font-size: 32px;
+  margin-bottom: 0;
+  padding:20px 0 0 0;
+}
+.home-card .congratulations .text{
+  font-size: 18px;
+}
+.home-card .congratulations .text span{
+  font-size: 22px;
+  font-weight: 700;
+}
+.home-card .congratulations .short-code{
+  
+  color:#00C853;
+  border: 1px solid #00C853;
+  font-weight: 400;
+  font-size:22px;
+  padding: 10px 20px 10px 20px;
+  margin: 20px 0 40px 0;
+}
+#loginContainer{
+  margin-top: 140px;
+}
+#loginContainer .md-primary{
+  padding: 0 20px 0 20px;
+}
+#withoutFacebookButton
+{
+  font-size:11px;
+  color:#1565C0;
+}
+.text{
+  color:#212121;
+}
+
+.homeUserContainer{
+  margin-top:40px;
+}

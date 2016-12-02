@@ -1,0 +1,16 @@
+<div class="login-background">
+    <div id="logoContainer" layout="column" layout-align="center center">
+        <div><img src="images/logo.png" width="140" height="140" style="margin-top:40%;" /></div>
+    </div>
+    <div id="loginContainer" layout="column" layout-align="center center">
+        <div>
+            <md-progress-circular ng-show="vm.loading" class="md-accent" md-diameter="40"></md-progress-circular>
+        </div>
+        <div>
+            <md-button ng-hide="vm.loading" class="md-raised md-primary" ng-click="openFacebookLogin()">Facebook</md-button>
+        </div>
+        <div>
+            <md-button ng-hide="vm.loading" id="withoutFacebookButton">Não tenho facebook</md-button>
+        </div>
+    </div>
+</div>
