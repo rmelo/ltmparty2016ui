@@ -1,9 +1,3 @@
-<!-- Header -->
-<div class="logo-container" layout="column" layout-align="center center">
-    <div><img src="images/logo.png" /></div>
-</div>
-
-<!-- Card -->
 <div class="home-card" layout="column" layout-align="center center" >
 
   <div class="logout" style="background:#FF00">
@@ -38,8 +32,7 @@
 
   <div class="congratulations" ng-show="vm.wins()" layout="column" layout-align="center center" >
     <p class="title">Parabéns!</p>
-    <p class="text">Você ganhou<br /><span>{{vm.user.award.title}}.</span></p>
-    <p class="short-code">{{vm.user.code}}</p>
+    <p class="text">Você ganhou<br /><span>{{vm.user.award.name}}.</span></p>
   </div>
 
 </div>

@@ -19,8 +19,10 @@ angular.module('app.loginView', ['ngRoute', 'ngMaterial'])
     }])
     .controller('loginController', ['$scope', '$location', 'authService', function ($scope, $location, authService) {
 
-        $scope.vm = {};
+        $scope.vm = {login:{}};
         $scope.vm.loading = false;
+        $scope.vm.login.code = 'BACON';
+        
 
         $scope.login = function (entrant) {
             authService.signIn(entrant);
@@ -75,7 +77,7 @@ angular.module('app.loginView', ['ngRoute', 'ngMaterial'])
             firebase.auth().signInWithPopup(provider).then(function (result) {
 
                 var user = result.user;
-                var entrant = { name: user.displayName, email: user.email, code: 'ABC123', photoURL: user.photoURL };
+                var entrant = { name: user.displayName, email: user.email, photoURL: user.photoURL };
                 $scope.addEntrant(entrant);
 
             }).catch(function (error) {
@@ -112,10 +114,11 @@ angular.module('app.loginView', ['ngRoute', 'ngMaterial'])
             }
         };
 
-    }]).config(function ($mdThemingProvider) {
+    }])
+    .config(function ($mdThemingProvider) {
 
         $mdThemingProvider.theme('docs-dark', 'default')
-            .primaryPalette('yellow')
+            .primaryPalette('blue')
             .dark();
 
     });

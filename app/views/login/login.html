@@ -1,6 +1,3 @@
-<div class="logo-container" layout="column" layout-align="center center">
-    <div><img src="images/logo.png" /></div>
-</div>
 <div class="login-container" layout="column" layout-align="center center">
     <p class="text-error">{{vm.lastError}}</p>
     <div>
@@ -10,14 +7,10 @@
         <md-button ng-hide="vm.loading" class="md-raised md-primary" ng-click="openFacebookLogin()">Facebook</md-button>
     </div>-->
     <div class="form-code">
-        <md-content md-theme="docs-dark" layout-padding>
+        <md-content md-theme="docs-dark">
             <md-input-container class="md-block">
                 <label>E-MAIL</label>
                 <input ng-model="vm.login.email" maxlength="300" class="email">
-            </md-input-container>
-            <md-input-container class="md-block">
-                <label>CÓDIGO</label>
-                <input ng-model="vm.login.code" maxlength="12" class="code">
             </md-input-container>
             <md-button ng-hide="vm.loading" class="md-raised md-primary" ng-click="loginEmail()">Entrar</md-button>
         </md-content>

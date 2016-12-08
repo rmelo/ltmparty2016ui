@@ -30,7 +30,9 @@ body, .container{
   color:#fff;
 }
 .form-code{
-  color: #fff !important; 
+  color: #fff !important;
+  width: 100%;
+  padding: 0 40px 0 40px; 
 }
 .form-code md-content{
   background: #303F9F;
@@ -80,11 +82,6 @@ body, .container{
   padding: 10px 40px 10px 40px;
   text-align: center;
 }
-.home-card .code{
-  text-align: center;
-  font-size: 22px;
-  padding: 0 40px 0 40px;
-}
 .code p, .green-text{
   color:#00E676;
 }
@@ -115,6 +112,7 @@ body, .container{
 }
 .home-card .congratulations .text{
   font-size: 18px;
+  padding:0 0 40px 0;
 }
 .home-card .congratulations .text span{
   font-size: 22px;
@@ -131,4 +129,81 @@ body, .container{
 }
 .text{
   color:#212121;
+}
+
+.stage{
+  text-align: center;
+}
+.stage-container{
+  display:inline-block;
+}
+.stage-header{
+  background: #283593;
+  box-shadow: 0 1px 2px rgba(43,59,93,.29);
+  text-align: center;
+}
+.stage-header h1{
+  color: #FFF;
+  padding: 10px 40px 0 40px;
+}
+.stage-header p{
+  color: #FFF;
+  padding: 0 0 20px 0;
+}
+.stage-button{
+  background: #2196F3;
+  padding: 20px 0 20px 0;
+  font-weight: 400;
+  color:#fff;
+  cursor: pointer;
+}
+.stage-list{
+  margin: 20px 0 0 0;
+}
+.stage-list ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.stage-list .stage-list-item{
+  text-align: left;
+  padding: 0; 
+  margin: 10px 0 0 0 ;
+}
+.stage-list .stage-list-item h3{
+  font-size: 22px;
+}
+.stage-list .item-text h3, .stage-list .item-text h4{
+  color: #fff !important;
+  padding: 0;
+  margin: 0;
+}
+.stage-list .item-text .list-item-number span{
+  color: #00E676;
+  font-size: 28px;
+  font-weight: 400;
+}
+.stage-list .item-text .list-item-number{
+  padding: 0 0 10px 0;
+  border-bottom: 2px solid #283593;
+}
+.stage-list .item-text .cancel-button{
+  margin: 20px 0 0 0;
+}
+.stage-list .item-text .cancel-button div{
+  height:22px;
+}
+.stage-list .item-text .cancel-button a{
+  font-size: 14px;
+  background: #283593;
+  color:#00E676 !important;
+  text-decoration: none;
+  padding: 10px;
+  margin: 0;
+  line-height:14px;
+  float: right;
+}
+.stage-list .finalize-button
+{
+  margin: 40px 0 40px 0;
 }

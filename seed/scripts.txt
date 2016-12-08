@@ -1,0 +1,1 @@
+firebase auth:import users.csv --hash-algo=bcrypt
