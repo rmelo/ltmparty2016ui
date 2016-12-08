@@ -2,9 +2,42 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');
 
 body{
-  background: #03A9F4;
   font-family: "Open Sans",open-sans,sans-serif;
   font-weight: 300;
+}
+body, .container{
+  background: #303F9F;
+}
+.text-error{
+  color: #F44336;
+  font-weight: 400;
+  padding: 0 40px 0 40px
+}
+.logo-container img{
+  width:80px;
+  height:80px;
+  margin: 40px 0 40px 0;
+}
+.login-container{
+  margin-top: 40px;
+}
+#login-container .md-primary{
+  padding: 0 20px 0 20px;
+}
+#without-fb-button
+{
+  font-size:11px;
+  color:#fff;
+}
+.form-code{
+  color: #fff !important; 
+}
+.form-code md-content{
+  background: #303F9F;
+}
+.form-code md-content input.code{
+  text-transform: uppercase;
+  font-size: 28px;
 }
 .home-background{
   width: 100%;
@@ -12,8 +45,8 @@ body{
   color: #5f697a;
 }
 .home-header img{
-  width:80;
-  height:80;
+  width:80px;
+  height:80px;
   margin: 40px 0 40px 0;
 }
 .home-card{
@@ -96,21 +129,6 @@ body{
   padding: 10px 20px 10px 20px;
   margin: 20px 0 40px 0;
 }
-#loginContainer{
-  margin-top: 140px;
-}
-#loginContainer .md-primary{
-  padding: 0 20px 0 20px;
-}
-#withoutFacebookButton
-{
-  font-size:11px;
-  color:#1565C0;
-}
 .text{
   color:#212121;
-}
-
-.homeUserContainer{
-  margin-top:40px;
 }

@@ -1,0 +1,17 @@
+<div class="logo-container" layout="column" layout-align="center center">
+    <div><img src="images/logo.png" style="margin-top:40%;" /></div>
+</div>
+<div id="login-container" style="background:#ff00ff;" >
+    <p class="text-error">{{vm.lastError}}</p>
+    <div>
+        <md-progress-circular ng-show="vm.loading" class="md-accent" md-diameter="40"></md-progress-circular>
+    </div>
+    <div>
+        <md-button ng-hide="vm.loading" class="md-raised md-primary" ng-click="openFacebookLogin()">Facebook</md-button>
+    </div>
+    <div class="form-code">
+        <p>TESTE</p>
+        <p>TESTE</p>
+        <p>TESTE</p>
+    </div>
+</div>

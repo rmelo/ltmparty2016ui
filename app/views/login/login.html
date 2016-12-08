@@ -1,16 +1,25 @@
-<div class="login-background">
-    <div id="logoContainer" layout="column" layout-align="center center">
-        <div><img src="images/logo.png" width="140" height="140" style="margin-top:40%;" /></div>
+<div class="logo-container" layout="column" layout-align="center center">
+    <div><img src="images/logo.png" /></div>
+</div>
+<div class="login-container" layout="column" layout-align="center center">
+    <p class="text-error">{{vm.lastError}}</p>
+    <div>
+        <md-progress-circular ng-show="vm.loading" class="md-accent" md-diameter="40"></md-progress-circular>
     </div>
-    <div id="loginContainer" layout="column" layout-align="center center">
-        <div>
-            <md-progress-circular ng-show="vm.loading" class="md-accent" md-diameter="40"></md-progress-circular>
-        </div>
-        <div>
-            <md-button ng-hide="vm.loading" class="md-raised md-primary" ng-click="openFacebookLogin()">Facebook</md-button>
-        </div>
-        <div>
-            <md-button ng-hide="vm.loading" id="withoutFacebookButton">Não tenho facebook</md-button>
-        </div>
+    <!--<div>
+        <md-button ng-hide="vm.loading" class="md-raised md-primary" ng-click="openFacebookLogin()">Facebook</md-button>
+    </div>-->
+    <div class="form-code">
+        <md-content md-theme="docs-dark" layout-padding>
+            <md-input-container class="md-block">
+                <label>E-MAIL</label>
+                <input ng-model="vm.login.email" maxlength="300" class="email">
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>CÓDIGO</label>
+                <input ng-model="vm.login.code" maxlength="12" class="code">
+            </md-input-container>
+            <md-button ng-hide="vm.loading" class="md-raised md-primary" ng-click="loginEmail()">Entrar</md-button>
+        </md-content>
     </div>
 </div>
