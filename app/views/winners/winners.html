@@ -1,18 +1,18 @@
-<a ng-click="logout()" class="master-logout-button"></a>
 <div class="winners">
     <div class="winners-container">
         <div class="winners-header">
             <h1 class="md-display-1">Ganhadores</h1>
         </div>
         <md-input-container class="md-block">
-                    <md-progress-circular style="display:inline-block;" ng-show="!vm.rewards" class="md-accent" md-diameter="40"></md-progress-circular>
-        <div class="winners-item" ng-repeat="reward in vm.rewards">
-            <h3 class="md-headline">{{reward.name}}</h3>
-            <ul>
-                <li ng-repeat="winner in reward.winners">
-                    <span class="md-subhead"><strong>#{{winner.position}}</strong> {{winner.name}}</span>
-                </li>
-            </ul>
-        </div>
+            <md-progress-circular style="display:inline-block;" ng-show="!vm.rewards" class="md-accent" md-diameter="40"></md-progress-circular>
+            <md-button ng-show="vm.rewards" md-theme="docs-light" class="md-raised md-primary" logout>Sair</md-button>
+            <div class="winners-item" ng-repeat="reward in vm.rewards">
+                <h3 class="md-headline">{{reward.name}}</h3>
+                <ul>
+                    <li ng-repeat="winner in reward.winners">
+                        <span ng-class="{'md-subhead':true, you:winner.email == user.email}"><strong>#{{winner.position}}</strong> {{winner.name}}</span>
+                    </li>
+                </ul>
+            </div>
     </div>
 </div>

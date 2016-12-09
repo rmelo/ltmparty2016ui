@@ -2,7 +2,7 @@ var fs = require('fs');
 var csv = require('fast-csv');
 var rewards = require("./original-files/rewards.json");
 
-var _data = { entrants: {}, rewards: rewards };
+var _data = { finished: false, entrants: {}, rewards: rewards };
 var _id = 1;
 
 var csvStream = csv
@@ -13,25 +13,25 @@ var csvStream = csv
             Email: row.email,
             FieldA: true,
             Pwd: 'JDJhJDEwJFZBc0hYTzl1RFcueW0vWDhleE51d3VtaFdOYVBid2w3ajBzWnJSamZzbWNVb2syYlRKejFD',
-            FieldB:'',
+            FieldB: '',
             Name: row.name,
-            Field1:'',
-            Field2:'',
-            Field3:'',
-            Field4:'',
-            Field5:'',
-            Field6:'',
-            Field7:'',
-            Field8:'',
-            Field9:'',
-            Field10:'',
-            Field11:'',
-            Field12:'',
-            Field13:'',
-            Field14:'',
-            Field15:'',
-            Field16:'',
-            Field17:''
+            Field1: '',
+            Field2: '',
+            Field3: '',
+            Field4: '',
+            Field5: '',
+            Field6: '',
+            Field7: '',
+            Field8: '',
+            Field9: '',
+            Field10: '',
+            Field11: '',
+            Field12: '',
+            Field13: '',
+            Field14: '',
+            Field15: '',
+            Field16: '',
+            Field17: ''
         };
     }),
     writableStream = fs.createWriteStream("./firebase-files/users-import.csv");

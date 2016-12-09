@@ -48,7 +48,13 @@ angular.module('app.loginView', ['ngRoute', 'ngMaterial'])
                 .then(function (snapshot) {
                     var value = snapshot.val();
                     if (value) {
-                        $scope.login(value);
+                        firebase.database().ref('finished').once('value').then(function (snapshot) {
+                            value.finished = snapshot.val();
+                            $scope.login(value);
+                        }).catch(function (error) {
+                            $scope.error(error.message);
+                            $scope.endAction();
+                        });
                     } else {
                         firebase.database().ref('entrants/' + key).set(entrant)
                             .then(function () {
@@ -89,11 +95,11 @@ angular.module('app.loginView', ['ngRoute', 'ngMaterial'])
             $scope.initAction();
 
             if ($scope.vm.login && $scope.vm.login.email && $scope.vm.login.code) {
-                var email = $scope.vm.login.email;
-                var code = $scope.vm.login.code;
+                var email = $scope.vm.login.email.toLowerCase();
+                var code = $scope.vm.login.code.toLowerCase();
                 firebase.auth().signInWithEmailAndPassword(email, code)
                     .then(function (user) {
-                        var entrant = { name: user.displayName, email: user.email, code: code, photoURL: user.photoURL };
+                        var entrant = { name: user.displayName, email: user.email };
                         $scope.addEntrant(entrant);
                     })
                     .catch(function (error) {

@@ -1,31 +1,17 @@
-<div class="home-card" layout="column" layout-align="center center" >
+<div class="home bg" layout="column" layout-align="center center">
 
-  <div class="logout" style="background:#FF00">
-    <md-button ng-click="logout()" class="md-fab md-mini" aria-label="sair">
-      <md-icon md-svg-src="images/ic_close_white_24px.svg"></md-icon>
-    </md-button>
-  </div>
-
-  <div class="user-info" >
-    <img ng-show="{{vm.user.photoURL}}" ng-src="{{vm.user.photoURL}}" class="user-photo" alt="{{vm.user.name}}" />
+  <div class="home-container bg">
     <h1 class="md-headline">{{vm.user.name}}</h1>
-  </div>
 
-  <div class="content-info" ng-hide="vm.wins()" >
-    <div class="content-message" >
-      <p class="md-body-1">Guarde seu <span class="green-text">código</span>, você precisará dele para ganhar seu prêmio.</p>
-      <p class="md-caption">Leve seu celular para o sorteio.</p>
+    <div ng-show="!vm.wins()" class="content md-body-1">
+      <p>Aguarde o sorteio e torça para ganhar.</p>
+      <p>Boa Sorte!</p>
     </div>
 
-    <div class="goodluck">
-      <p class="md-body-2">Boa sorte!</p>
+    <div class="congratulations" ng-show="vm.wins()" layout="column" layout-align="center center">
+      <p class="title">Você ganhou! Parabéns!</p>
+      <p class="text"><span>{{vm.user.award.name}}.</span></p>
     </div>
-
   </div>
-
-  <div class="congratulations" ng-show="vm.wins()" layout="column" layout-align="center center" >
-    <p class="title">Parabéns!</p>
-    <p class="text">Você ganhou<br /><span>{{vm.user.award.name}}.</span></p>
-  </div>
-
+  <md-button id="logout" md-theme="docs-dark" class="md-raised md-primary" logout>Sair</md-button>
 </div>

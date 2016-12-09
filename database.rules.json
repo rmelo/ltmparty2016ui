@@ -1,11 +1,8 @@
 {
   "rules": {
-    "entrants": {
-      ".read": true,
-      ".write": true
-    },
+    ".read": "auth != null",
+    ".write": "auth != null",
     "rewards": {
-      ".read": true,
       ".write": "auth.uid == 'admin'"
     }
   }

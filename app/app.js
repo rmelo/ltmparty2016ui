@@ -7,6 +7,7 @@ var app = angular.module('app', [
     'app.homeView',
     'app.stageView',
     'app.winnersView',
+    'app.rewardView'
 ])
 
 app.config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
@@ -21,11 +22,33 @@ app.run(function($rootScope, $location, authService) {
             $location.path('/login');
         } else if (eventObj.authenticated === true) {
             var user = authService.getUser();
-            if(user){
-                $location.path(user.code == 'ltmfestaadmin' ? '/stage' : '/home');
-            }else{
+            if (user) {
+                $location.path(user.isAdmin ? '/stage' : '/home');
+            } else {
                 $location.path('/home');
             }
+        } else if (eventObj.admin) {
+            $location.path('/stage');
+        } else if (eventObj.finished) {
+            $location.path('/winners');
+        } else if (eventObj.notAdmin || eventObj.notFinished) {
+            $location.path('/home');
         }
     });
 });
+
+app.directive('logout', ['authService', function(authService) {
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+            element.bind('click', function() {
+                firebase.auth().signOut().then(function() {
+                    authService.logout();
+                    location.reload();
+                }, function(error) {
+                    // An error happened.
+                });
+            });
+        }
+    };
+}]);

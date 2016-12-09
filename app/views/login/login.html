@@ -10,11 +10,11 @@
         <md-content md-theme="docs-dark">
             <md-input-container class="md-block">
                 <label>E-mail</label>
-                <input ng-model="vm.login.email" maxlength="300" class="email">
+                <input ng-model="vm.login.email" maxlength="300" class="lower">
             </md-input-container>
             <md-input-container class="md-block">
                 <label>Código</label>
-                <input ng-model="vm.login.code" maxlength="40" class="code">
+                <input ng-model="vm.login.code" maxlength="40" class="code lower">
             </md-input-container>
             <md-button ng-hide="vm.loading" class="md-raised md-primary" ng-click="loginEmail()">Entrar</md-button>
         </md-content>

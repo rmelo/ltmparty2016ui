@@ -1,0 +1,21 @@
+<a logout class="master-logout-button"></a>
+<div class="stage bg">
+    <div class="stage-container bg">
+        <div class="stage-header">
+            <h1 class="md-headline reward-title">Premiar</h1>
+        </div>
+        <md-content md-theme="docs-dark" class="bg">
+            <md-input-container class="md-block">
+                <label>E-mail</label>
+                <input ng-model="vm.email" maxlength="300" class="lower">
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>Prêmio</label>
+                <input ng-model="vm.award" maxlength="300">
+            </md-input-container>
+            <md-button ng-show="!loading" md-theme="docs-dark" class="md-raised md-primary" ng-click="reward();">Premiar</md-button>
+            <md-progress-circular style="display:inline-block;" ng-show="loading" class="md-accent" md-diameter="40"></md-progress-circular>
+        </md-content>
+    </div>
+</div>
+</div>

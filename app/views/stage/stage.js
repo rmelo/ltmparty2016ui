@@ -1,14 +1,18 @@
 'use strict';
 
 angular.module('app.stageView', ['ngRoute', 'ngMaterial'])
-    .config(['$routeProvider', function ($routeProvider) {
+    .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/stage', {
             templateUrl: 'views/stage/stage.html',
             controller: 'stageController',
             resolve: {
-                auth: ["$q", "authService", function ($q, authService) {
+                auth: ["$q", "authService", function($q, authService) {
                     var user = authService.getUser();
                     if (user) {
+                        if (!user.isAdmin)
+                            return $q.reject({ notAdmin: true });
+                        if (user.finished)
+                            return $q.reject({ finished: true });
                         return $q.when(user);
                     } else {
                         return $q.reject({ authenticated: false });
@@ -17,30 +21,30 @@ angular.module('app.stageView', ['ngRoute', 'ngMaterial'])
             }
         });
     }])
-    .controller('stageController', ['$scope', '$location', '$rootScope', 'authService', function ($scope, $location, $rootScope, authService) {
+    .controller('stageController', ['$scope', '$location', '$rootScope', 'authService', function($scope, $location, $rootScope, authService) {
 
-        $scope.init = function () {
+        $scope.init = function() {
             $scope.vm = {};
             $scope.vm.entrants = [];
             $scope.vm.reward = null;
             $scope.vm.loading = false;
         };
 
-        $scope.startAction = function () {
+        $scope.startAction = function() {
             $scope.loading = true;
         };
 
-        $scope.completeAction = function () {
+        $scope.completeAction = function() {
             $scope.loading = false;
         };
 
-        $scope.remaining = function () {
+        $scope.remaining = function() {
             if ($scope.vm.reward)
                 return $scope.vm.reward.qtd - $scope.vm.reward.winners.length;
             return 0;
         }
 
-        $scope.showRaffleButton = function () {
+        $scope.showRaffleButton = function() {
             return $scope.vm.entrants.length > 0
                 && $scope.vm.reward
                 && !$scope.vm.reward.finished
@@ -48,27 +52,18 @@ angular.module('app.stageView', ['ngRoute', 'ngMaterial'])
                 && !$scope.loading;
         };
 
-        $scope.showFinalizeButton = function () {
+        $scope.showFinalizeButton = function() {
             return $scope.vm.reward
                 && !$scope.vm.reward.finished
                 && $scope.vm.reward.qtd == $scope.vm.reward.winners.length;
         };
 
-        $scope.logout = function () {
-            firebase.auth().signOut().then(function () {
-                authService.logout();
-                location.reload();
-            }, function (error) {
-                // An error happened.
-            });
-        };
-
-        $scope.loadEntrants = function () {
+        $scope.loadEntrants = function() {
             firebase.database().ref('entrants').once('value')
-                .then(function (snapshot) {
+                .then(function(snapshot) {
 
                     var entrants = snapshot.val();
-                    snapshot.forEach(function (childSnapshot) {
+                    snapshot.forEach(function(childSnapshot) {
                         var childData = childSnapshot.val();
                         if (!childData.award)
                             $scope.vm.entrants.push(childData);
@@ -79,18 +74,18 @@ angular.module('app.stageView', ['ngRoute', 'ngMaterial'])
                 });
         };
 
-        $scope.getRewards = function () {
+        $scope.getRewards = function() {
             firebase.database().ref('rewards').once('value')
-                .then(function (snapshot) {
+                .then(function(snapshot) {
 
                     var rewards = [];
                     var rewardsData = snapshot.val();
 
-                    rewardsData.forEach(function (rewardData) {
+                    rewardsData.forEach(function(rewardData) {
 
                         var winners = [];
                         if (rewardData.winners) {
-                            rewardData.winners.forEach(function (winner) {
+                            rewardData.winners.forEach(function(winner) {
                                 winners.push(winner);
                             });
                         }
@@ -109,15 +104,23 @@ angular.module('app.stageView', ['ngRoute', 'ngMaterial'])
                         $scope.vm.reward = current;
                         $scope.$apply();
                     } else {
-                        $rootScope.$apply(function () {
-                            $location.path("/winners");
-                            console.log($location.path());
-                        });
+                        debugger;
+                        var user = authService.getUser();
+                        if (!user.finished) {
+                            user.finished = true;
+                            authService.signIn(user);
+                            firebase.database().ref('finished').set(true)
+                                .then(function() {
+                                    $rootScope.$apply(function() {
+                                        $location.path("/winners");
+                                    });
+                                });
+                        }
                     }
                 });
         };
 
-        $scope.raffle = function () {
+        $scope.raffle = function() {
 
             if ($scope.vm.entrants.length > 0 && $scope.vm.reward.qtd > $scope.vm.reward.winners.length) {
 
@@ -138,12 +141,12 @@ angular.module('app.stageView', ['ngRoute', 'ngMaterial'])
                 updates['entrants/' + winner.email.split('.').join('_')] = winner;
 
                 firebase.database().ref().update(updates)
-                    .then(function () {
+                    .then(function() {
                         $scope.completeAction();
                         $scope.init();
                         $scope.loadEntrants();
                     })
-                    .catch(function (error) {
+                    .catch(function(error) {
                         console.log(error);
                         $scope.completeAction();
                     });
@@ -151,16 +154,16 @@ angular.module('app.stageView', ['ngRoute', 'ngMaterial'])
             };
         };
 
-        $scope.finalize = function () {
+        $scope.finalize = function() {
             if ($scope.vm.reward.winners.length == $scope.vm.reward.qtd) {
                 $scope.startAction();
                 firebase.database().ref('rewards/' + $scope.vm.reward.id).child('finished').set(true)
-                    .then(function () {
+                    .then(function() {
                         $scope.init();
                         $scope.loadEntrants();
                         $scope.completeAction();
                     })
-                    .catch(function (error) {
+                    .catch(function(error) {
                         console.log(error);
                         $scope.completeAction();
                     });
@@ -168,15 +171,15 @@ angular.module('app.stageView', ['ngRoute', 'ngMaterial'])
         };
 
 
-        $scope.remove = function (position, email) {
-            
+        $scope.remove = function(position, email) {
+
             $scope.startAction();
 
             var updates = {};
 
             var winners = {}
             var newWinners = _.reject($scope.vm.reward.winners, { position: position });
-            _.each(newWinners, function (winner, index) {
+            _.each(newWinners, function(winner, index) {
                 delete winner.$$hashKey;
                 winner.position = index + 1
                 winners[winner.position] = winner;
@@ -188,12 +191,12 @@ angular.module('app.stageView', ['ngRoute', 'ngMaterial'])
             updates['entrants/' + email.split('.').join('_') + '/award'] = null;
 
             firebase.database().ref().update(updates)
-                .then(function () {
+                .then(function() {
                     $scope.init();
                     $scope.loadEntrants();
                     $scope.completeAction();
                 })
-                .catch(function (error) {
+                .catch(function(error) {
                     console.log(error);
                     $scope.completeAction();
                 });;
@@ -203,7 +206,7 @@ angular.module('app.stageView', ['ngRoute', 'ngMaterial'])
         $scope.loadEntrants();
 
     }])
-    .config(function ($mdThemingProvider) {
+    .config(function($mdThemingProvider) {
 
         $mdThemingProvider.theme('docs-dark', 'default')
             .primaryPalette('blue')
