@@ -3,6 +3,10 @@
     "entrants": {
       ".read": true,
       ".write": true
+    },
+    "rewards": {
+      ".read": true,
+      ".write": "auth.uid == 'admin'"
     }
   }
 }

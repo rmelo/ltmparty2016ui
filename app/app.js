@@ -5,7 +5,8 @@ var app = angular.module('app', [
     'ngRoute',
     'app.loginView',
     'app.homeView',
-    'app.stageView'
+    'app.stageView',
+    'app.winnersView',
 ])
 
 app.config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
@@ -19,7 +20,12 @@ app.run(function($rootScope, $location, authService) {
         if (eventObj.authenticated === false) {
             $location.path('/login');
         } else if (eventObj.authenticated === true) {
-            $location.path('/home');
+            var user = authService.getUser();
+            if(user){
+                $location.path(user.code == 'ltmfestaadmin' ? '/stage' : '/home');
+            }else{
+                $location.path('/home');
+            }
         }
     });
 });

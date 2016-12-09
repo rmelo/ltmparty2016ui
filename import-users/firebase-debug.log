@@ -20,3 +20,25 @@
     at process._tickCallback (internal/process/next_tick.js:98:9)
 [error] 
 [error] Error: An unexpected error has occurred.
+[debug] ----------------------------------------------------------------------
+[debug] Command:      /Users/rodrigomelo/.nvm/versions/node/v6.3.1/bin/node /Users/rodrigomelo/.nvm/versions/node/v6.3.1/bin/firebase auth:import users.csv --hash-algo=bcrypt
+[debug] CLI Version:  3.2.0
+[debug] Platform:     darwin
+[debug] Node Version: v6.3.1
+[debug] Time:         Thu Dec 08 2016 17:33:10 GMT-0200 (BRST)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[debug] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase"]
+[debug] Error: ENOENT: no such file or directory, stat 'users.csv'
+    at Error (native)
+    at Object.fs.statSync (fs.js:987:18)
+    at ._action (/Users/rodrigomelo/.nvm/versions/node/v6.3.1/lib/node_modules/firebase-tools/commands/auth-import.js:41:20)
+    at /Users/rodrigomelo/.nvm/versions/node/v6.3.1/lib/node_modules/firebase-tools/lib/command.js:172:29
+    at tryCatch (/Users/rodrigomelo/.nvm/versions/node/v6.3.1/lib/node_modules/firebase-tools/node_modules/rsvp/dist/rsvp.js:538:12)
+    at invokeCallback (/Users/rodrigomelo/.nvm/versions/node/v6.3.1/lib/node_modules/firebase-tools/node_modules/rsvp/dist/rsvp.js:553:13)
+    at publish (/Users/rodrigomelo/.nvm/versions/node/v6.3.1/lib/node_modules/firebase-tools/node_modules/rsvp/dist/rsvp.js:521:7)
+    at flush (/Users/rodrigomelo/.nvm/versions/node/v6.3.1/lib/node_modules/firebase-tools/node_modules/rsvp/dist/rsvp.js:2373:5)
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickCallback (internal/process/next_tick.js:98:9)
+[error] 
+[error] Error: An unexpected error has occurred.

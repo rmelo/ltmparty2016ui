@@ -13,6 +13,17 @@ body, .container{
   font-weight: 400;
   padding: 0 40px 0 40px
 }
+.master-logout-button{
+  background: #283593;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: block;
+  position: absolute;
+  top:10px;
+  right: 10px;
+  cursor: pointer;
+}
 .logo-container img{
   width:80px;
   height:80px;
@@ -36,10 +47,6 @@ body, .container{
 }
 .form-code md-content{
   background: #303F9F;
-}
-.form-code md-content input.code{
-  text-transform: uppercase;
-  font-size: 28px;
 }
 .home-background{
   width: 100%;
@@ -131,13 +138,13 @@ body, .container{
   color:#212121;
 }
 
-.stage{
+.stage, .winners{
   text-align: center;
 }
-.stage-container{
+.stage-container, .winners-container{
   display:inline-block;
 }
-.stage-header{
+.stage-header, .winners-header{
   background: #283593;
   box-shadow: 0 1px 2px rgba(43,59,93,.29);
   text-align: center;
@@ -173,8 +180,13 @@ body, .container{
 .stage-list .stage-list-item h3{
   font-size: 22px;
 }
+
+.stage-list .stage-list-item:first-child h3, .stage-list .stage-list-item:first-child h4{
+  color:#FFF !important;
+}
+
 .stage-list .item-text h3, .stage-list .item-text h4{
-  color: #fff !important;
+  color:#2196F3;
   padding: 0;
   margin: 0;
 }
@@ -202,8 +214,34 @@ body, .container{
   margin: 0;
   line-height:14px;
   float: right;
+  cursor: pointer;
 }
 .stage-list .finalize-button
 {
   margin: 40px 0 40px 0;
+}
+.winners-header h1{
+  color: #FFF;
+  padding:40px 80px 40px 80px;
+  min-width: 400px;
+}
+.winners-item{
+  text-align: left;
+}
+.winners-item ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.winners-item h3{
+  color: #fff;
+  border-bottom: 1px dashed #F3F3F5;
+  padding: 20px 0 20px 0;
+}
+.winners-item ul{
+  color: #fff !important;
+}
+
+.winners-item ul li span strong{
+   color: #00E676 !important;
 }

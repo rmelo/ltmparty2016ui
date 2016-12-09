@@ -19,10 +19,8 @@ angular.module('app.loginView', ['ngRoute', 'ngMaterial'])
     }])
     .controller('loginController', ['$scope', '$location', 'authService', function ($scope, $location, authService) {
 
-        $scope.vm = {login:{}};
+        $scope.vm = { login: {} };
         $scope.vm.loading = false;
-        $scope.vm.login.code = 'BACON';
-        
 
         $scope.login = function (entrant) {
             authService.signIn(entrant);

@@ -1,36 +1,40 @@
+<a ng-click="logout()" class="master-logout-button"></a>
 <div class="stage">
     <div class="stage-container">
         <div class="stage-header">
-
             <h1 class="md-headline">
                 <md-input-container class="md-block">
                     <md-progress-circular style="display:inline-block;" ng-show="!vm.reward" class="md-accent" md-diameter="40"></md-progress-circular>{{vm.reward.name}}</h1>
-            <p ng-show="vm.reward"><strong>{{vm.entrants.length}}</strong> participantes</p>
+            <p ng-show="vm.reward && remaining()>0"><strong>{{remaining()}}</strong> prêmio para sortear entre <strong>{{vm.entrants.length}}</strong> participantes</p>
+            <p ng-show="vm.reward && remaining()==0">Todos os itens sorteados!</p>
             <p ng-hide="vm.reward"> Carregando...</p>
             </md-input-container>
         </div>
-        <md-button ng-show="showRaffleButton()" class="md-raised md-primary" ng-click="raffle();">Sortear</md-button>
-        <div ng-show="vm.reward" class="stage-list">
-            <ul ng-repeat="winner in vm.reward.winners | orderBy:'position':true">
-                <li class="stage-list-item">
-                    <div class="item-text">
-                        <div class="list-item-number">
-                            <span>#{{winner.position}}</span>
-                            <h3 class="md-headline">{{winner.name}}</h3>
-                            <h4 class="md-subhead">{{winner.email}}</h4>
-                            <div class="cancel-button">
-                                <div>
-                                    <a class="md-subhead" href="javascript:return void();">Anular</a>
+        <md-input-container class="md-block">
+            <md-progress-circular style="display:inline-block;" ng-show="loading" class="md-accent" md-diameter="40"></md-progress-circular>
+            <md-button md-theme="docs-dark" ng-show="showRaffleButton()" class="md-raised md-primary" ng-click="raffle();">Sortear</md-button>
+            <div ng-show="vm.reward" class="stage-list">
+                <ul>
+                    <li class="stage-list-item" ng-repeat="winner in vm.reward.winners | orderBy:'position':true">
+                        <div class="item-text">
+                            <div class="list-item-number">
+                                <span>#{{winner.position}}</span>
+                                <h3 class="md-headline">{{winner.name}}</h3>
+                                <h4 class="md-subhead">{{winner.email}}</h4>
+                                <div class="cancel-button">
+                                    <div>
+                                        <a ng-show="!loading" class="md-subhead" ng-click="remove(winner.position, winner.email)">Anular</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </li>
-            </ul>
-            <br/>
-            <div class="finalize-button">
-                <md-button ng-show="showFinalizeButton()" class="md-raised" ng-click="finalize();">Finalizar</md-button>
+                    </li>
+                </ul>
+                <br/>
+                <div class="finalize-button" md-theme="docs-dark">
+                    <md-button ng-show="showFinalizeButton()" class="md-raised md-primary" ng-click="finalize()">Finalizar</md-button>
+                </div>
+
             </div>
-        </div>
     </div>
 </div>

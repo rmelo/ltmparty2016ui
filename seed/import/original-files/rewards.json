@@ -2,7 +2,7 @@
     "1": {
         "id": 1,
         "name": "R$ 1.000,00 em Vale Férias",
-        "qtd": 1,
+        "qtd": 4,
         "position": 1,
         "active": true,
         "finished": false,
@@ -11,7 +11,7 @@
     "2": {
         "id": 2,
         "name": "CAMERA DIGITAL COOLPIX L320 PRETA NIKON",
-        "qtd": 2,
+        "qtd": 3,
         "position": 2,
         "active": true,
         "finished": false,
